@@ -1,7 +1,7 @@
 import streamlit as app
 import pandas
 import numpy
-import matplotlib..pyplot as plt
+import matplotlib.pyplot as plt
 import statsmodels.api as stats
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
