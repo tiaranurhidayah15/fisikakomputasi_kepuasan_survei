@@ -1,4 +1,4 @@
-import steamlit as st 
+import streamlit as st 
 import pandas as st
 import numpy 
 import matplotlib.pyplot as plt
