@@ -46,12 +46,12 @@ c1.metric("IKM (%)", f"{nilai_ikm:.2f}")
 c2.metric("Kategori Mutu", klasifikasi(nilai_ikm))
 c3.metric("Jumlah Responden", data.shape[0])
 
-app.divider()
+st.divider()
 
 # =====================================================
 # ANALISIS SELISIH (GAP)
 # =====================================================
-app.subheader("Analisis Selisih Kepuasan")
+st.subheader("Analisis Selisih Kepuasan")
 
 selisih = 5 - rata_indikator
 indikator_prioritas = selisih.sort_values(ascending=False).index[0]
@@ -62,15 +62,15 @@ ax1.set_title("Selisih Skor Tiap Indikator")
 ax1.set_ylabel("Nilai Selisih")
 ax1.tick_params(axis='x', rotation=45)
 
-app.pyplot(fig1)
-app.warning(f"Indikator prioritas peningkatan: *{indikator_prioritas}*")
+st.pyplot(fig1)
+st.warning(f"Indikator prioritas peningkatan: *{indikator_prioritas}*")
 
-app.divider()
+st.divider()
 
 # =====================================================
 # ANALISIS HUBUNGAN (KORELASI)
 # =====================================================
-app.subheader("Analisis Hubungan Antar Variabel")
+st.subheader("Analisis Hubungan Antar Variabel")
 
 mat_korelasi = variabel.corr()
 
@@ -83,17 +83,17 @@ ax2.set_yticks(range(len(mat_korelasi.columns)))
 ax2.set_xticklabels(mat_korelasi.columns, rotation=45)
 ax2.set_yticklabels(mat_korelasi.columns)
 
-app.pyplot(fig2)
+st.pyplot(fig2)
 
 ranking = mat_korelasi.iloc[:-1, -1].sort_values(ascending=False)
-app.dataframe(ranking.to_frame("Korelasi terhadap Indikator Akhir"))
+st.dataframe(ranking.to_frame("Korelasi terhadap Indikator Akhir"))
 
-app.divider()
+st.divider()
 
 # =====================================================
 # ANALISIS REGRESI
 # =====================================================
-app.subheader("Model Regresi Linear")
+st.subheader("Model Regresi Linear")
 
 X = stats.add_constant(variabel.iloc[:, 0:4])
 Y = variabel.iloc[:, 4]
@@ -108,16 +108,16 @@ ax3.bar(koef.index, koef.values)
 ax3.axhline(0)
 ax3.set_title("Nilai Koefisien Regresi")
 
-app.pyplot(fig3)
-app.info(f"Koefisien Determinasi (R²): {nilai_r2:.3f}")
-app.success(f"Variabel paling berpengaruh: {koef.abs().idxmax()}")
+st.pyplot(fig3)
+st.info(f"Koefisien Determinasi (R²): {nilai_r2:.3f}")
+st.success(f"Variabel paling berpengaruh: {koef.abs().idxmax()}")
 
-app.divider()
+st.divider()
 
 # =====================================================
 # SEGMENTASI RESPONDEN (CLUSTERING)
 # =====================================================
-app.subheader("Segmentasi Kepuasan Pegawai")
+st.subheader("Segmentasi Kepuasan Pegawai")
 
 normalisasi = StandardScaler()
 data_scaled = normalisasi.fit_transform(variabel.fillna(variabel.mean()))
@@ -130,6 +130,6 @@ df_cluster["Kelompok"] = hasil_cluster
 
 rata_cluster = df_cluster.groupby("Kelompok").mean()
 
-app.dataframe(rata_cluster)
+st.dataframe(rata_cluster)
 
-app.success("Segmentasi selesai dilakukan.")
+st.success("Segmentasi selesai dilakukan.")
