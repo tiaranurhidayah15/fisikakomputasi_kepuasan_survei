@@ -1,4 +1,4 @@
-import streamlit as st
+import steamlit as st 
 import pandas as st
 import numpy 
 import matplotlib.pyplot as plt
@@ -9,6 +9,8 @@ from sklearn.preprocessing import StandardScaler
 # =====================================================
 # SETUP DASHBOARD
 # =====================================================
+import steamlit as st 
+import pandas as pd
 st.set_page_config(page_title="Analisis Kepuasan Pegawai", layout="wide")
 st.title("📌 Dashboard Evaluasi Kepuasab Pegawai")
 st.caption("Visualisasi dan analisis data survei berbasis indikator")
