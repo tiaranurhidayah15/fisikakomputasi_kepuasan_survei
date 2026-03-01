@@ -41,7 +41,7 @@ def klasifikasi(nilai):
         if batas[0] <= nilai <= batas[1]:
             return label
 
-c1, c2, c3 = app.columns(3)
+c1, c2, c3 = st.columns(3)
 c1.metric("IKM (%)", f"{nilai_ikm:.2f}")
 c2.metric("Kategori Mutu", klasifikasi(nilai_ikm))
 c3.metric("Jumlah Responden", data.shape[0])
