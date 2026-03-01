@@ -1,6 +1,6 @@
 import streamlit as app
 import pandas as app
-import numpy as app
+import numpy 
 import matplotlib.pyplot as plt
 import statsmodels.api as stats
 from sklearn.cluster import KMeans
