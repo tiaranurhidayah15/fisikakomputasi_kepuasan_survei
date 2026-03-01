@@ -9,7 +9,7 @@ from sklearn.preprocessing import StandardScaler
 # =====================================================
 # SETUP DASHBOARD
 # =====================================================
-import steamlit as st 
+import streamlit as st 
 import pandas as pd
 st.set_page_config(page_title="Analisis Kepuasan Pegawai", layout="wide")
 st.title("📌 Dashboard Evaluasi Kepuasab Pegawai")
